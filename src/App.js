@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { 
+  Card,
+  CardContent,
+  Typography,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-function App() {
+const useAppStyles = makeStyles({
+  root: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+  },
+  card: {
+    minWidth: 275,
+    margin: '12px',
+  }
+})
+
+export default function App() {
+  const classes = useAppStyles();
+  const emotionList = [
+    'surprise',
+    'bad',
+    'afraid',
+    'angry',
+    'disgust',
+    'sad',
+    'happy',
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      {emotionList.map((emotion) => {
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+            <Typography variant="h5" component="h2">
+              {emotion}
+            </Typography>
+            </CardContent>
+          </Card>
+        )
+      })}
     </div>
   );
 }
-
-export default App;
