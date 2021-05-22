@@ -14,10 +14,10 @@ const App = () => {
       <Navbar /> 
       <h1 style={{display: "flex", justifyContent: "center", alignItems: "center"}}>How are you Feeling</h1>
       <Switch>
-        <Route path="/"><Home /></Route>
+        {/* <Route path="/"><Home /></Route> */}
         <Route path="/New"><New /></Route>
       </Switch>
-      {/* <EmotionListDisplay /> component to display list of emotion */}
+      <EmotionListDisplay /> component to display list of emotion
     </Router>
       {/* <SampleFirebaseComponent></SampleFirebaseComponent> */}
     </div>
