@@ -16,7 +16,7 @@ const useNavStyles = makeStyles({
   link: {
     color: '#050831',
     margin: '32px',
-    padding: '4px',
+    padding: '2px',
     "&:hover": {
       textDecoration: 'none',
     },
@@ -28,6 +28,7 @@ const useNavStyles = makeStyles({
     right: '16px',
     padding: '0 4px',
     borderRadius: '8px',
+    borderStyle: 'solid',
     "&:hover": {
       textDecoration: 'none',
     },
