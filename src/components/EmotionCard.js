@@ -3,33 +3,15 @@ import { Card, Typography, Zoom } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 //component for each individual emotion card
-const EmotionCard = ({ emotionWord, delay }) => {
-  const classes = useAppStyles();
+const EmotionCard = ({ emotionWord, delay, color }) => {
+  const styleProps = { backgroundColor: color };
+  const classes = useAppStyles(styleProps);
 
-  function hover(e) {
-    e.target.style.background = "#133072";
-    e.target.style.color = "#FFFFFF";
-  }
-
-  function unhover(e) {
-    e.target.style.background = "#d5adfb";
-    e.target.style.color = "#050831";
-  }
   return (
     <div>
       <Zoom in="true" style={{ transitionDelay: delay }} timeout={800}>
-        <Card
-          className={classes.card}
-          onMouseEnter={hover}
-          onMouseLeave={unhover}
-        >
-          <Typography
-            variant="h5"
-            component="h2"
-            className={classes.card}
-            onMouseOver={hover}
-            onMouseOut={unhover}
-          >
+        <Card className={classes.card}>
+          <Typography variant="h5" component="h2" align="center">
             {emotionWord}
           </Typography>
         </Card>
@@ -38,23 +20,28 @@ const EmotionCard = ({ emotionWord, delay }) => {
   );
 };
 
-export default EmotionCard;
-
 //styles
 const useAppStyles = makeStyles({
   card: {
     // display: 'flex',
-    // minHeight: 100,
-    // minWidth: 120,
-    padding: 10,
+    minHeight: 100,
+    minWidth: 120,
+    padding: 30,
     margin: "12px",
-    backgroundColor: "#d5adfb",
-    color: "#050831",
+    backgroundColor: (styleProps) => styleProps.backgroundColor,
+    color: "black",
     textAlign: "center",
     borderRadius: 5,
+    "&:hover": {
+      backgroundColor: "#133072",
+      color: "#FFFFFF",
+    },
+    cursor: "pointer",
   },
 
   text: {
     fontFamily: "Open Sans",
   },
 });
+
+export default EmotionCard;
