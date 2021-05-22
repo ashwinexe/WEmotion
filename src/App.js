@@ -7,8 +7,8 @@ import "./App.css";
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <h1>How are you Feeling</h1>
+      <Navbar /> 
+      <h1 style={{display: "flex", justifyContent: "center", alignItems: "center"}}>How are you Feeling</h1>
       <EmotionListDisplay /> {/*component to display list of emotion*/}
       {/* <SampleFirebaseComponent></SampleFirebaseComponent> */}
     </div>
