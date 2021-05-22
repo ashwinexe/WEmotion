@@ -8,6 +8,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { Navbar } from './components';
 import './App.css';
+import SampleFirebaseComponent from './components/SampleFirebaseComponent'
+
 
 const useAppStyles = makeStyles({
   cards: {
@@ -52,7 +54,7 @@ export default function App() {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar />
       <div className={classes.cards}>
         {emotionList.map((emotion, delay) => {
           return (
@@ -67,7 +69,8 @@ export default function App() {
             </Zoom>
           )
         })}
-      </div>
+      </div> */}
+      <SampleFirebaseComponent></SampleFirebaseComponent>
     </>
   );
 }
