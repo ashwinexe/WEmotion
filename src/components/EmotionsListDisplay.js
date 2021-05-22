@@ -63,6 +63,14 @@ const EmotionListDisplay = () => {
     setCurrentEmotionActive(word);
     setLevel2Active(true);
   };
+  
+  let level2 = level2Active
+
+  const renderBackButton = () => {
+    if (level2) {
+      return <button className={classes.back} onClick={() => setLevel2Active(false)}>Go back</button>
+    }
+  }
 
   //conditionally rendering next level of words, depending on what user clicked on
   return (
@@ -96,7 +104,8 @@ const EmotionListDisplay = () => {
               })
         }
       </div>
-      <button className={classes.back} onClick={() => setLevel2Active(false)}>Go back</button>
+      
+      {renderBackButton()}
       {/*button to go back to previous words*/}
     </div>
   );
