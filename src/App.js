@@ -18,8 +18,7 @@ const App = () => {
         <Route path="/New"><EmotionListDisplay /></Route>
         <Route path="/Signup"><Signup /></Route>
         <Route path="/Login"><Login /></Route>
-        {/* <Route path="/Login"><Login /></Route> */}
-        <Route path="/"><div>ALEXITHYMIA</div></Route>
+        <Route path="/"><Home /></Route>
       </Switch>
       {/* <EmotionListDisplay />  */}
       {/* component to display list of emotion */}
