@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/Signup"><Signup /></Route>
         <Route path="/Login"><Login /></Route>
       </Switch>
-      {/* <EmotionListDisplay />  */}
+      <EmotionListDisplay /> 
       {/* component to display list of emotion */}
     </Router>
       {/* <SampleFirebaseComponent></SampleFirebaseComponent> */}
