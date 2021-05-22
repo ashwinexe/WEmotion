@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link,
-} from '@material-ui/core';
+import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useNavStyles = makeStyles({
@@ -24,23 +22,41 @@ const useNavStyles = makeStyles({
     position: 'absolute',
     right: '16px',
     padding: '0 4px',
+    borderRadius: '8px'
   },
 })
 
 export default function Navbar() {
   const classes = useNavStyles();
   const navbarList = [
-    'Home', // this is where the Alexithymia info will go
-    'New', // this is where the user will input new emotions
-    'Timeline', // this is where the calendar will go
-    'Settings', // this is a duh
+    {
+      name: 'Home',
+      to: '/'
+    },
+    {
+      name: 'New',
+      to: '/New'
+    },
+    {
+      name: 'Time',
+      to: '/Time'
+    },
+    {
+      name: 'Settings',
+      to: '/Settings'
+    }
+
+    // 'Home', // this is where the Alexithymia info will go
+    // 'New', // this is where the user will input new emotions
+    // 'Time', // this is where the calendar will go
+    // 'Settings', // this is a duh
   ]
 
   return (
     <div className={classes.root}>
-      {navbarList.map((item) => {
+      {navbarList.map((navbarList) => {
         return (
-          <Link className={classes.link} href="/">{item}</Link>
+          <Link className={classes.link} href={navbarList.to}>{navbarList.name}</Link>
         )
       })}
       <Link className={classes.crisis} href="https://suicidepreventionlifeline.org/">CRISIS</Link>
