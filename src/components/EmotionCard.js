@@ -8,9 +8,6 @@ const EmotionCard = ({ emotionWord, delay, color, emotionClicked }) => {
   const styleProps = { backgroundColor: color };
   const classes = useAppStyles(styleProps);
 
-  //word clicked on
-  const [cardClicked, setCardClicked] = useState("");
-
   return (
     <div onClick={() => emotionClicked(emotionWord)}>
       <Zoom in="true" style={{ transitionDelay: delay }} timeout={800}>

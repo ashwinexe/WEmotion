@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const EmotionListDisplay = () => {
   const classes = useAppStyles();
-  const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise");
+  const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise"); //emotion card clicked on
   const [level2Active, setLevel2Active] = useState(false);
   //simple emotions
   const emotionList = [
@@ -17,6 +17,7 @@ const EmotionListDisplay = () => {
     "happy",
   ];
 
+  //PLACEHOLDER FOR DB -second level of words, depending on what been clicked
   const level2Words = {
     surprise: ["shock", "confusion", "amazement", "excitement"],
     happy: [
@@ -57,6 +58,7 @@ const EmotionListDisplay = () => {
     happy: "#F7CCD1",
   };
 
+  //updating display depending on what word has been clicked
   const updateDisplay = (word) => {
     setCurrentEmotionActive(word);
     setLevel2Active(true);
@@ -66,30 +68,35 @@ const EmotionListDisplay = () => {
   return (
     <>
       <div className={classes.cards}>
-        {!level2Active
-          ? emotionList.map((emotion, delay) => {
-              return (
-                <EmotionCard
-                  key={delay}
-                  emotionClicked={updateDisplay}
-                  delay={delay}
-                  emotionWord={emotion}
-                  color={emotionListColor[emotion]}
-                />
-              );
-            })
-          : level2Words[currentEmotionActive].map((emotion, delay) => {
-              return (
-                <EmotionCard
-                  key={delay}
-                  emotionClicked={() => console.log("nothing")}
-                  delay={delay}
-                  emotionWord={emotion}
-                  color={"#FE886A"}
-                />
-              );
-            })}
-        <button onClick={() => setLevel2Active(false)}>Go back</button>
+        {
+          //conditional if to check if word has been clicked on and update display
+          !level2Active
+            ? emotionList.map((emotion, delay) => {
+                return (
+                  <EmotionCard
+                    key={delay}
+                    emotionClicked={updateDisplay}
+                    delay={delay}
+                    emotionWord={emotion}
+                    color={emotionListColor[emotion]}
+                  />
+                );
+              })
+            : //renders second level of words if level2Words state active
+              level2Words[currentEmotionActive].map((emotion, delay) => {
+                return (
+                  <EmotionCard
+                    key={delay}
+                    emotionClicked={() => console.log("nothing")}
+                    delay={delay}
+                    emotionWord={emotion}
+                    color={"#FE886A"}
+                  />
+                );
+              })
+        }
+        <button onClick={() => setLevel2Active(false)}>Go back</button>{" "}
+        {/*button to go back to previous words*/}
       </div>
     </>
   );
