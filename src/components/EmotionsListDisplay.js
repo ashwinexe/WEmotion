@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import EmotionCard from "./EmotionCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Popup from "./popup";
+import EmotionInfo from "./Emotion Info/EmotionInfo";
 
 const EmotionListDisplay = () => {
   const classes = useAppStyles();
   const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise"); //emotion card clicked on
+  const [popUpEmotion, setpopUpEmotion] = useState(null);
   const [level2Active, setLevel2Active] = useState(false);
   // const [level3Active, setLevel3Active] = useState(false);
   const [popUp, setpopUp] = useState(false);
@@ -83,13 +85,17 @@ const EmotionListDisplay = () => {
     setCurrentEmotionActive(word);
     setLevel2Active(true);
   };
-  
-  let level2 = level2Active
+
+  let level2 = level2Active;
   const renderBackButton = () => {
     if (level2) {
-      return <button className={classes.back} onClick={() => setLevel2Active(false)}>Go back</button>
+      return (
+        <button className={classes.back} onClick={() => setLevel2Active(false)}>
+          Go back
+        </button>
+      );
     }
-  }
+  };
 
   //conditionally rendering next level of words, depending on what user clicked on
   return (
@@ -103,7 +109,7 @@ const EmotionListDisplay = () => {
                   <EmotionCard
                     key={delay}
                     emotionClicked={updateDisplay}
-                    delay={delay+200}
+                    delay={delay + 200}
                     emotionWord={emotion}
                     color={emotionListColor[emotion]}
                   />
@@ -115,7 +121,10 @@ const EmotionListDisplay = () => {
                   <EmotionCard
                     // onClick={() => setpopUp(true)}
                     key={delay}
-                    emotionClicked={() => setpopUp(true)}
+                    emotionClicked={() => {
+                      setpopUp(true);
+                      setpopUpEmotion(emotion);
+                    }}
                     delay={delay}
                     emotionWord={emotion}
                     color={"#FE886A"}
@@ -125,8 +134,19 @@ const EmotionListDisplay = () => {
         }
       </div>
 
-      <Popup trigger={popUp} setTrigger = {setpopUp}>
-        <h3>Emotion Name</h3>
+      <Popup trigger={popUp} setTrigger={setpopUp}>
+        <h3>{`${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion},`}</h3>
+        <EmotionInfo word={popUpEmotion} />
+
+        {/* button to log emotion into database*/}
+        <button
+          onClick={() => {
+            console.log("emotion eneterd logged to db");
+            setpopUp(false);
+          }}
+        >
+          Log Emotion?
+        </button>
       </Popup>
 
       {renderBackButton()}
@@ -137,27 +157,27 @@ const EmotionListDisplay = () => {
 
 const useAppStyles = makeStyles({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   cards: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
-    fontFamily: 'Open Sans',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
+    fontFamily: "Open Sans",
   },
   back: {
-    display: 'inline-block',
-    border: 'none',
-    padding: '1rem 2rem',
-    margin: '32px',
-    textDecoration: 'none',
-    background: '#133072',
-    color: '#FFFFFF',
-    cursor: 'pointer',
-    textAlign: 'center',
-    fontFamily: 'Open Sans',
+    display: "inline-block",
+    border: "none",
+    padding: "1rem 2rem",
+    margin: "32px",
+    textDecoration: "none",
+    background: "#133072",
+    color: "#FFFFFF",
+    cursor: "pointer",
+    textAlign: "center",
+    fontFamily: "Open Sans",
   },
 });
 
