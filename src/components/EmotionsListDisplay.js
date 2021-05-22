@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import EmotionCard from "./EmotionCard";
 import { makeStyles } from "@material-ui/core/styles";
+import Popup from "./popup";
 
 const EmotionListDisplay = () => {
   const classes = useAppStyles();
   const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise"); //emotion card clicked on
   const [level2Active, setLevel2Active] = useState(false);
+  const [level3Active, setLevel3Active] = useState(false);
+  const [popUp, setpopUp] = useState(false);
+
+  // togglePop = () => {
+  //   setSeen({
+
+  //   })
+  // }
+
   //simple emotions
   const emotionList = [
     "surprise",
@@ -58,6 +68,16 @@ const EmotionListDisplay = () => {
     happy: "#F7CCD1",
   };
 
+  // const emotionLinks = {
+  //   surprise: '',
+  //   bad: '',
+  //   afraid: '',
+  //   angry: '',
+  //   digust: '',
+  //   sad: '',
+  //   happy: '',
+  // }
+
   //updating display depending on what word has been clicked
   const updateDisplay = (word) => {
     setCurrentEmotionActive(word);
@@ -65,7 +85,6 @@ const EmotionListDisplay = () => {
   };
   
   let level2 = level2Active
-
   const renderBackButton = () => {
     if (level2) {
       return <button className={classes.back} onClick={() => setLevel2Active(false)}>Go back</button>
@@ -94,8 +113,9 @@ const EmotionListDisplay = () => {
               level2Words[currentEmotionActive].map((emotion, delay) => {
                 return (
                   <EmotionCard
+                    // onClick={() => setpopUp(true)}
                     key={delay}
-                    emotionClicked={() => console.log("nothing")}
+                    emotionClicked={() => setpopUp(true)}
                     delay={delay}
                     emotionWord={emotion}
                     color={"#FE886A"}
@@ -104,7 +124,11 @@ const EmotionListDisplay = () => {
               })
         }
       </div>
-      
+
+      <Popup trigger={popUp} setTrigger = {setpopUp}>
+        <h3>Emotion Name</h3>
+      </Popup>
+
       {renderBackButton()}
       {/*button to go back to previous words*/}
     </div>
