@@ -32,7 +32,7 @@ export default function Navbar() {
   const navbarList = [
     'Home', // this is where the Alexithymia info will go
     'New', // this is where the user will input new emotions
-    'Time', // this is where the calendar will go
+    'Timeline', // this is where the calendar will go
     'Settings', // this is a duh
   ]
 

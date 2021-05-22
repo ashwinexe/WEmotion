@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Card,
-  CardContent,
   Typography,
   Zoom,
 } from '@material-ui/core';
@@ -14,17 +13,22 @@ import SampleFirebaseComponent from './components/SampleFirebaseComponent'
 const useAppStyles = makeStyles({
   cards: {
     display: 'flex',
-    justifyContent: 'space-evenly',
     flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
     fontFamily: 'Open Sans',
   },
   card: {
-    minWidth: 120,
+    // display: 'flex',
+    // minHeight: 100,
+    // minWidth: 120,
+    padding: 10,
     margin: '12px',
     backgroundColor: '#d5adfb',
     color: '#050831',
     textAlign: 'center',
+    borderRadius: 5,
   },
+  
   text: {
     fontFamily: 'Open Sans',
   }
@@ -59,17 +63,14 @@ export default function App() {
         {emotionList.map((emotion, delay) => {
           return (
             <Zoom in="true" style={{ transitionDelay: delay }} timeout={800}>
-              <Card className={classes.card} onMouseEnter={hover} onMouseLeave={unhover}>
-                <CardContent>
-                  <Typography variant="h5" component="h2">
-                    {emotion}
+              {/* <Card className={classes.card} onMouseEnter={hover} onMouseLeave={unhover}> */}
+                  {/* <Typography variant="h5" component="h2" className={classes.card} onMouseOver={hover} onMouseOut={unhover}>
+                      {emotion}
                   </Typography>
-                </CardContent>
-              </Card>
             </Zoom>
           )
         })}
-      </div> */}
+      </div> */} 
       <SampleFirebaseComponent></SampleFirebaseComponent>
     </>
   );
