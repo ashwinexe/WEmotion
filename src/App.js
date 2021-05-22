@@ -2,20 +2,34 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import EmotionListDisplay from "./components/EmotionsListDisplay";
 import "./App.css";
-import "./components/Emotion Info/EmotionInfo";
-import EmotionInfo from "./components/Emotion Info/EmotionInfo";
+import Home from "./components/Home";
+import New from "./components/New";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import SampleFirebaseComponent from "./components/SampleFirebaseComponent";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <h1 style={{ textAlign: "center" }}>
-        Which word most closely represents how you feel?
-      </h1>
-      <EmotionListDisplay /> {/*component to display list of emotion*/}
+      <Router>
+        <Navbar />
+        <h1
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          How are you Feeling
+        </h1>
+        <Switch>
+          {/* <Route path="/"><Home /></Route> */}
+          <Route path="/New">
+            <New />
+          </Route>
+        </Switch>
+        <EmotionListDisplay /> {/*component to display list of emotion*/}
+      </Router>
       {/* <SampleFirebaseComponent></SampleFirebaseComponent> */}
-      <EmotionInfo />
     </div>
   );
 };

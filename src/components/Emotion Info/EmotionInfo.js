@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import WordDefinition from "./WordDefinition";
-const EmotionInfo = () => {
-  const [currentEmotion, setCurrentEmotion] = useState("shock"); //default but will appear after user click specific word
+const EmotionInfo = ({ word }) => {
   const [wordInfo, setWordInfo] = useState(null);
 
   const fetchData = async () => {
     try {
       const result =
-        await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${currentEmotion}
+        await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}
      `);
       const body = await result.json();
       console.log(body[0].meanings[0].definitions[0]);

@@ -10,10 +10,10 @@ App for people with alexithymia and others who have trouble expressing and descr
   - graph over time of emotions
   - calender component to access specific date
 - emotion information page(frontend)
-- definition of emotion
-- graphic of where emotion occurs in body
-- extra information on emotion
-- picture to showcase context of emotion
+  - definition of emotion
+  - graphic of where emotion occurs in body
+  - extra information on emotion
+  - picture to showcase context of emotion
 - Link seperate pages with react-router
 - make site look better (finishing touches if have time)
 
