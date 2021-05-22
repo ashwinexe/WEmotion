@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Typography, Zoom } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 //component for each individual emotion card
-const EmotionCard = ({ emotionWord, delay, color }) => {
+const EmotionCard = ({ emotionWord, delay, color, emotionClicked }) => {
+  //style props
   const styleProps = { backgroundColor: color };
   const classes = useAppStyles(styleProps);
 
+  //word clicked on
+  const [cardClicked, setCardClicked] = useState("");
+
   return (
-    <div>
+    <div onClick={() => emotionClicked(emotionWord)}>
       <Zoom in="true" style={{ transitionDelay: delay }} timeout={800}>
         <Card className={classes.card}>
           <Typography variant="h5" component="h2" align="center">
