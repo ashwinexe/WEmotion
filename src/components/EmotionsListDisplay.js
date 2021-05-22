@@ -135,8 +135,18 @@ const EmotionListDisplay = () => {
       </div>
 
       <Popup trigger={popUp} setTrigger={setpopUp}>
-        <h3>{popUpEmotion}</h3>
+        <h3>{`${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion},`}</h3>
         <EmotionInfo word={popUpEmotion} />
+
+        {/* button to log emotion into database*/}
+        <button
+          onClick={() => {
+            console.log("emotion eneterd logged to db");
+            setpopUp(false);
+          }}
+        >
+          Log Emotion?
+        </button>
       </Popup>
 
       {renderBackButton()}

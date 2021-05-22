@@ -19,7 +19,7 @@ const App = () => {
             alignItems: "center",
           }}
         >
-          How are you Feeling
+          How are you Feeling?
         </h1>
         <Switch>
           {/* <Route path="/"><Home /></Route> */}
