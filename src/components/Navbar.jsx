@@ -9,12 +9,17 @@ const useNavStyles = makeStyles({
     fontSize: '32px',
     color: '#050831',
     position: 'relative',
+    height: '80px',
+    display: 'flex',
+    alignItems: 'center',
   },
   link: {
     color: '#050831',
-    margin: '32px 16px',
+    margin: '32px',
     padding: '4px',
-    textDecoration: 'none',
+    "&:hover": {
+      textDecoration: 'none',
+    },
   },
   crisis: {
     backgroundColor: '#f90052',
@@ -22,7 +27,10 @@ const useNavStyles = makeStyles({
     position: 'absolute',
     right: '16px',
     padding: '0 4px',
-    borderRadius: '8px'
+    borderRadius: '8px',
+    "&:hover": {
+      textDecoration: 'none',
+    },
   },
 })
 
@@ -34,11 +42,11 @@ export default function Navbar() {
       to: '/'
     },
     {
-      name: 'New',
+      name: 'Add New Mood',
       to: '/New'
     },
     {
-      name: 'Time',
+      name: 'Moods Over Time',
       to: '/Time'
     },
     {

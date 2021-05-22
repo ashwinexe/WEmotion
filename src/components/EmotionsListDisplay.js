@@ -66,7 +66,7 @@ const EmotionListDisplay = () => {
 
   //conditionally rendering next level of words, depending on what user clicked on
   return (
-    <>
+    <div className={classes.root}>
       <div className={classes.cards}>
         {
           //conditional if to check if word has been clicked on and update display
@@ -76,7 +76,7 @@ const EmotionListDisplay = () => {
                   <EmotionCard
                     key={delay}
                     emotionClicked={updateDisplay}
-                    delay={delay}
+                    delay={delay+200}
                     emotionWord={emotion}
                     color={emotionListColor[emotion]}
                   />
@@ -95,19 +95,36 @@ const EmotionListDisplay = () => {
                 );
               })
         }
-        <button onClick={() => setLevel2Active(false)}>Go back</button>{" "}
-        {/*button to go back to previous words*/}
       </div>
-    </>
+      <button className={classes.back} onClick={() => setLevel2Active(false)}>Go back</button>
+      {/*button to go back to previous words*/}
+    </div>
   );
 };
 
 const useAppStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   cards: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    fontFamily: "Open Sans",
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    fontFamily: 'Open Sans',
+  },
+  back: {
+    display: 'inline-block',
+    border: 'none',
+    padding: '1rem 2rem',
+    margin: '32px',
+    textDecoration: 'none',
+    background: '#133072',
+    color: '#FFFFFF',
+    cursor: 'pointer',
+    textAlign: 'center',
+    fontFamily: 'Open Sans',
   },
 });
 

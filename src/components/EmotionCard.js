@@ -24,11 +24,13 @@ const EmotionCard = ({ emotionWord, delay, color, emotionClicked }) => {
 //styles
 const useAppStyles = makeStyles({
   card: {
-    // display: 'flex',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     minHeight: 100,
     minWidth: 120,
-    padding: 30,
-    margin: "12px",
+    // padding: 30,
+    margin: "20px",
     backgroundColor: (styleProps) => styleProps.backgroundColor,
     color: "black",
     textAlign: "center",
@@ -39,7 +41,6 @@ const useAppStyles = makeStyles({
     },
     cursor: "pointer",
   },
-
   text: {
     fontFamily: "Open Sans",
   },

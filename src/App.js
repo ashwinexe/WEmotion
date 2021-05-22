@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <h1>How are you Feeling</h1>
+      <h1 style={{textAlign: 'center'}}>Which word most closely represents how you feel?</h1>
       <EmotionListDisplay /> {/*component to display list of emotion*/}
       {/* <SampleFirebaseComponent></SampleFirebaseComponent> */}
     </div>
