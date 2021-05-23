@@ -27,11 +27,12 @@ const App = () => {
     <Router>
       <Navbar />
       <Switch>
-        <PrivateRoute exact path="/New"><New /></PrivateRoute>
-        <Route path="/Signup"><Signup /></Route>
-        <Route path="/Login"><Login /></Route>
-        <Route path="/forgot-password"><ForgotPassword /></Route>
-        <Route exact path="/"><Home /></Route>
+        {/* // try using components  */}
+        <PrivateRoute exact path="/New" component={New} />
+        <Route path="/Signup" component={Signup} />
+        <Route path="/Login" component={Login} />
+        <Route path="/forgot-password" component={ForgotPassword} />
+        <Route exact path="/" component={Home} />
       </Switch>
     </Router>
     </AuthProvider>
