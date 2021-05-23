@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./components/Auth";
 import "bootstrap/dist/css/bootstrap.min.css"
 import PrivateRoute from "./components/PrivateRoute"
+import SampleFirebaseComponent from "./components/SampleFirebaseComponent";
 
 // import SampleFirebaseComponent from "./components/SampleFirebaseComponent";
 
@@ -32,11 +33,12 @@ const App = () => {
         <Route path="/Signup" component={Signup} />
         <Route path="/Login" component={Login} />
         <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/sample" component={SampleFirebaseComponent} />
         <Route exact path="/" component={Home} />
       </Switch>
     </Router>
     </AuthProvider>
-      {/* <SampleFirebaseComponent></SampleFirebaseComponent> */}
+
     </div>
   );
 };

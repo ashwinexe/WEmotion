@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-import { FirebaseContext } from "..Firebase/";
+import FirebaseContext  from "../Firebase/context";
 
 const SampleFirebaseComponent = () => {
   return (
     <FirebaseContext.Consumer>
-      {(firebase) => {
-        const db = firebase.db.collection("Emotions").onSnapshot(
+      {(firestore) => {
+        const db = firestore.collection("Emotions").onSnapshot(
           (items) => {
             items.forEach((item) => {
               let id = item.id;
