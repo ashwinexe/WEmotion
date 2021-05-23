@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import {
+  EmotionListDisplay,
+} from "./index";
 // import Button from '@material-ui/core/Button';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import TextField from '@material-ui/core/TextField';
@@ -27,7 +30,7 @@ import React, { useState } from "react";
 //   },
 // }));
 
-export default function New() {
+// export default function New() {
 //   const classes = useStyles();
 //   const [emotion, setEmotion] = useState('');
 //   const [desc, setDesc] = useState('');
@@ -52,9 +55,9 @@ export default function New() {
 //   }
     
 
-    return (
-      <p>hello</p>
-    )
+    // return (
+    //   <p>hello</p>
+    // )
 //   return (
 //     <Container component="main" maxWidth="xs">
 //       <CssBaseline />
@@ -118,4 +121,13 @@ export default function New() {
 //         </form>
 //     </Container>
 //   );
+// }
+
+export default function New() {
+  return (
+    <div>
+      <h1 style={{ textAlign: 'center', padding: '32px' }}>Which word most closely represents how you feel?</h1>
+      <EmotionListDisplay />
+    </div>
+  );
 }
