@@ -73,7 +73,7 @@ export default function Navbar() {
           <Link className={classes.link} href={navbarList.to}>{navbarList.name}</Link>
         )
       })}
-      <Link className={classes.crisis} href="https://suicidepreventionlifeline.org/">CRISIS</Link>
+      <Link className={classes.crisis} target="_blank" rel="noopener noreferrer" href="https://suicidepreventionlifeline.org/">CRISIS</Link>
     </div>
   );
 }
