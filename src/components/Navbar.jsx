@@ -65,6 +65,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
+      <img src={"./img.logo.png"}></img>
       {navbarList.map((navbarList) => {
         return (
           <Link className={classes.link} href={navbarList.to}>{navbarList.name}</Link>

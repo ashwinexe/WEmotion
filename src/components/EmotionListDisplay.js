@@ -5,6 +5,7 @@ import Popup from "./popup";
 import EmotionInfo from "./Emotion Info/EmotionInfo";
 import FirebaseContext from '../Firebase/context'
 import { useAuth } from './Auth'
+import Alert from "@material-ui/lab/Alert";
 
 const EmotionListDisplay = () => {
   const firestore = useContext(FirebaseContext)
@@ -207,7 +208,7 @@ const EmotionListDisplay = () => {
         <EmotionInfo word={popUpEmotion} />
 
         {/* button to log emotion into database*/}
-        <button
+        <button className={classes.submit}
           onClick={() => {
 
             handleSave()
@@ -248,6 +249,10 @@ const useAppStyles = makeStyles({
     textAlign: "center",
     fontFamily: "Open Sans",
   },
+  submit: {
+    border: "1px solid black",
+    borderRadius: "5px",
+  }
 });
 
 export default EmotionListDisplay;

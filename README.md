@@ -1,6 +1,6 @@
 ## This is a project for Major League Hacking - Mental Hacks Hackathon
 # Project overview 
-
+<img src="/src/components/img/logo-animated.gif">
 App for people with alexithymia and others who have trouble expressing and describing emotions and feelings.
 
 ## 📌 Frontend
