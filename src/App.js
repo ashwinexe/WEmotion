@@ -14,6 +14,7 @@ import ForgotPassword from "./components/ForgotPassword"
 import EmotionHistory from './components/EmotionHistory'
 import New from "./components/New"
 import Navbar from "./components/Navbar"
+import Date from "./components/Date"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./components/Auth";
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -30,7 +31,9 @@ const App = () => {
       <Navbar />
       <Switch>
         {/* // try using components  */}
-        <PrivateRoute exact path="/New" component={New} />
+        {/* change Route to PrivateRoute for /New and /Date when not testing */}
+        <Route exact path="/New" component={New} />
+        <Route path="/Date" component={Date} />
         <Route path="/Signup" component={Signup} />
         <Route path="/Login" component={Login} />
         <Route path="/forgot-password" component={ForgotPassword} />

@@ -50,7 +50,7 @@ export default function Navbar() {
     },
     {
       name: 'Moods Over Time',
-      to: '/Time'
+      to: '/Date'
     },
     {
       name: 'Settings',

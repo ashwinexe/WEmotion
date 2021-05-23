@@ -187,7 +187,7 @@ const EmotionListDisplay = () => {
                     }}
                     delay={delay}
                     emotionWord={emotion}
-                    color={"#ACD8CB"}
+                    color={emotionListColor[currentEmotionActive]}
                   />
                 );
               })

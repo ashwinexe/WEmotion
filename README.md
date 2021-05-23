@@ -1,6 +1,5 @@
-# Project overview todo
-
-## What?
+## This is a project for Major League Hacking - Mental Hacks Hackathon
+# Project overview 
 
 App for people with alexithymia and others who have trouble expressing and describing emotions and feelings.
 
