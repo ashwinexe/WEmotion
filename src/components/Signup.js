@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
+  Link,
   Grid,
   Box,
   Typography,
   Container,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import heart from './img/heart.png'
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Alert from "@material-ui/lab/Alert";
+import heart from "./img/heart.png";
+import { useAuth } from "./Auth";
+import { Form } from "react-bootstrap";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -32,100 +37,157 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const SignUp = ({ history }) => {
+//     const handleSignUp = useCallback(async event => {
+//       event.preventDefault();
+//       const { email, password } = event.target.elements;
+//       try {
+//         await Firebase
+//           .auth()
+//           .createUserWithEmailAndPassword(email.value, password.value);
+//         history.push("/");
+//       } catch (error) {
+//         alert(error);
+//       }
+//     }, [history]);
+
 export default function Signup() {
   const classes = useStyles();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory()
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (passwordRef.currentvalue !== passwordConfirmRef.currentvalue) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/")
+    } catch {
+      setError("Failed to create an account");
+    }
+
+    setLoading(false);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-      <Avatar alt="Heart" src={heart}></Avatar>
+        <Avatar alt="Heart" src={heart}></Avatar>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="confirmpassword"
-                label="Confirm Password"
-                type="confirmpassword"
-                id="confirmpassword"
-                autoComplete="confirm-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-            </Grid>
-          </Grid>
+        {error && <Alert severity="error">{error}</Alert>}
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+          <Form.Group id="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" ref={emailRef} required />
+          </Form.Group>
+          <Form.Group id="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" ref={passwordRef} required />
+          </Form.Group>
+          <Form.Group id="password-confirm">
+            <Form.Label>Password Confirmation</Form.Label>
+            <Form.Control type="password" ref={passwordConfirmRef} required />
+          </Form.Group>
+          {/* <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="lname"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  ref={emailRef}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  ref={passwordRef}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="confirmpassword"
+                  label="Confirm Password"
+                  type="password"
+                  id="confirmpassword"
+                  autoComplete="confirm-password"
+                  ref={passwordConfirmRef}
+                />
+              </Grid>
+              <Grid item xs={12}>
+              </Grid>
+            </Grid> */}
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={loading}
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              {/* <Link href="/Login">
-                Already have an account? Sign in
-              </Link> */}
+              <Link href="/Login">
+                  Already have an account? Sign in
+                </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-      </Box>
+      <Box mt={5}></Box>
     </Container>
   );
 }
