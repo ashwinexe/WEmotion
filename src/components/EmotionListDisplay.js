@@ -73,7 +73,7 @@ const EmotionListDisplay = () => {
     Sad: [
       "Lonely", 
       "Vulnerable", 
-      "Despiar", 
+      "Despair", 
       "Guilty", 
       "Depression", 
       "Hurt"
