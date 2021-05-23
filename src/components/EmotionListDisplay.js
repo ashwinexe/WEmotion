@@ -1,17 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import EmotionCard from "./EmotionCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Popup from "./popup";
 import EmotionInfo from "./Emotion Info/EmotionInfo";
-import { db } from './firebase';
+import FirebaseContext from '../Firebase/context'
+import { useAuth } from './Auth'
 
 const EmotionListDisplay = () => {
+  const firestore = useContext(FirebaseContext)
   const classes = useAppStyles();
   const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise"); //emotion card clicked on
   const [popUpEmotion, setpopUpEmotion] = useState(null);
   const [level2Active, setLevel2Active] = useState(false);
   // const [level3Active, setLevel3Active] = useState(false);
   const [popUp, setpopUp] = useState(false);
+  const userAuth = useAuth();
+
+  useEffect(() => {
+    console.log(firestore, "FIRESTORE")
+    console.log(userAuth.currentUser.uid)
+
+      const db = firestore.collection(`UserData/${userAuth.currentUser.uid}/user-emotions`).onSnapshot(
+        (items) => {
+          items.forEach((item) => {
+            let id = item.id;
+            let data = item.data();
+
+            console.log(data);
+          });
+          // ...
+        },
+        (err) => {
+          console.log(`Encountered error: ${err}`);
+        }
+      );
+
+  })
 
   //simple emotions
   const emotionList = [
@@ -123,6 +147,14 @@ const EmotionListDisplay = () => {
   // });
 
   //conditionally rendering next level of words, depending on what user clicked on
+
+  const handleSave = () => {
+    firestore.collection('UserData').doc(userAuth.currentUser.uid).collection('user-emotions').add({
+      emotion: `${popUpEmotion}`,
+      date: new Date()
+    }, { merge: true })
+  }
+
   return (
     <div className={classes.root}>
       <div className={classes.cards}>
@@ -167,7 +199,7 @@ const EmotionListDisplay = () => {
         <button
           onClick={() => {
 
-            console.log("emotion entered logged to db");
+            handleSave()
             setpopUp(false);
           }}
         >
