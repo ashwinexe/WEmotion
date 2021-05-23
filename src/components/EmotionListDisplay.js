@@ -3,6 +3,7 @@ import EmotionCard from "./EmotionCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Popup from "./popup";
 import EmotionInfo from "./Emotion Info/EmotionInfo";
+import { db } from './firebase';
 
 const EmotionListDisplay = () => {
   const classes = useAppStyles();
@@ -11,12 +12,6 @@ const EmotionListDisplay = () => {
   const [level2Active, setLevel2Active] = useState(false);
   // const [level3Active, setLevel3Active] = useState(false);
   const [popUp, setpopUp] = useState(false);
-
-  // togglePop = () => {
-  //   setSeen({
-
-  //   })
-  // }
 
   //simple emotions
   const emotionList = [
@@ -29,9 +24,14 @@ const EmotionListDisplay = () => {
     "Happy",
   ];
 
-  //PLACEHOLDER FOR DB -second level of words, depending on what been clicked
+  //PLACEHOLDER FOR DB -second level of words, depending on what been clicked--it doesn't need to be in the db
   const level2Words = {
-    Surprise: ["Shock", "Confusion", "Amazement", "Excitement"],
+    Surprise: [
+      "Shock", 
+      "Confusion", 
+      "Amazement", 
+      "Excitement"
+    ],
     Happy: [
       "Playful",
       "Content",
@@ -43,8 +43,20 @@ const EmotionListDisplay = () => {
       "Trust",
       "Hope",
     ],
-    Sad: ["Lonely", "Vulnerable", "Despiar", "Guilty", "Depression", "Hurt"],
-    Disgust: ["Disapproval", "Disdain", "Sick", "Repulsion"],
+    Sad: [
+      "Lonely", 
+      "Vulnerable", 
+      "Despiar", 
+      "Guilty", 
+      "Depression", 
+      "Hurt"
+    ],
+    Disgust: [
+      "Disapproval", 
+      "Disdain", 
+      "Sick", 
+      "Repulsion"
+    ],
     Angry: [
       "Mistrust",
       "Shame",
@@ -55,30 +67,32 @@ const EmotionListDisplay = () => {
       "Distant",
       "Critical",
     ],
-    Bad: ["Bordedom", "Busy", "Stress", "Tired"],
-    Afraid: ["Scared", "Anxious", "Insecure", "Weak", "Shaky", "Nervous"],
+    Bad: [
+      "Boredom", 
+      "Busy", 
+      "Stress", 
+      "Tired"
+    ],
+    Afraid: [
+      "Scared", 
+      "Anxious", 
+      "Insecure", 
+      "Weak", 
+      "Shaky", 
+      "Nervous"
+    ],
   };
 
   //colors for all emotions (would be in database)
   const emotionListColor = {
-    Surprise: "#FE886A",
-    Bad: "#A3DEE8",
-    Afraid: "#6ACBDE",
-    Angry: "#EEAFC5",
-    Disgust: "#F2E9D3",
+    Surprise: "#8FCDD4",
+    Bad: "#DB7558",
+    Afraid: "#ACD8CB",
+    Angry: "#F6A6B6",
+    Disgust: "#FFCF57",
     Sad: "#DA8EC0",
-    Happy: "#F7CCD1",
+    Happy: "#FFB19B",
   };
-
-  // const emotionLinks = {
-  //   surprise: '',
-  //   bad: '',
-  //   afraid: '',
-  //   angry: '',
-  //   digust: '',
-  //   sad: '',
-  //   happy: '',
-  // }
 
   //updating display depending on what word has been clicked
   const updateDisplay = (word) => {
@@ -96,6 +110,17 @@ const EmotionListDisplay = () => {
       );
     }
   };
+
+  // db.collection("Emotions").doc("OVF7WuFoJAqAmECns3NM").set({
+  //     emotion: "Los Angeles",
+  //     desc: "CA",
+  // })
+  // .then(() => {
+  //     console.log("Document successfully written!");
+  // })
+  // .catch((error) => {
+  //     console.error("Error writing document: ", error);
+  // });
 
   //conditionally rendering next level of words, depending on what user clicked on
   return (
@@ -127,7 +152,7 @@ const EmotionListDisplay = () => {
                     }}
                     delay={delay}
                     emotionWord={emotion}
-                    color={"#FE886A"}
+                    color={"#ACD8CB"}
                   />
                 );
               })
@@ -141,7 +166,8 @@ const EmotionListDisplay = () => {
         {/* button to log emotion into database*/}
         <button
           onClick={() => {
-            console.log("emotion eneterd logged to db");
+
+            console.log("emotion entered logged to db");
             setpopUp(false);
           }}
         >
