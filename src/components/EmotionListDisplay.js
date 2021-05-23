@@ -5,6 +5,7 @@ import Popup from "./popup";
 import EmotionInfo from "./Emotion Info/EmotionInfo";
 import FirebaseContext from '../Firebase/context'
 import { useAuth } from './Auth'
+import Alert from "@material-ui/lab/Alert";
 
 const EmotionListDisplay = () => {
   const firestore = useContext(FirebaseContext)
@@ -204,7 +205,6 @@ const EmotionListDisplay = () => {
 
             handleSave()
             setpopUp(false);
-
           }}
         >
           Log Emotion?
