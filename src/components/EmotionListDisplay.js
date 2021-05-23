@@ -169,7 +169,10 @@ const EmotionListDisplay = () => {
 
             console.log("emotion entered logged to db");
             setpopUp(false);
+            this.updateInput;
           }}
+          value = {this.state.level2}
+          onClick={this.addEmotion}
         >
           Log Emotion?
         </button>
@@ -180,6 +183,7 @@ const EmotionListDisplay = () => {
     </div>
   );
 };
+
 
 const useAppStyles = makeStyles({
   root: {
