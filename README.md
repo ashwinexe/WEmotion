@@ -2,6 +2,7 @@
 # Project overview 
 <img src="/src/components/img/logo-animated.gif">
 App for people with alexithymia and others who have trouble expressing and describing emotions and feelings.
+
 # 💡 Inspiration
 
 Alexithymia is a trait (not a disorder!) that describes problems with feeling emotions. The Greek word loosely translates to "no words for emotion" because oftentimes, those with alexithymia have trouble describing and expressing their emotions. For example, they have trouble expressing happiness during a joyous occasion. Others have trouble even just understanding what they're feeling. While the condition is not well-known, it’s estimated that 1 in 10 people has it. We hope that this project helps alleviate the difficulties faced by people with alexithymia and the greater population as a whole in describing and expressing their emotions.
