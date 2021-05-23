@@ -27,7 +27,7 @@ export default function AlignItemsList() {
   const[desc, setDesc] = useState();
   const[date, setDate] = useState();
 
-  let date = [
+  let data = [
       {
           emotion: '',
           color: '',
