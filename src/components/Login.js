@@ -4,9 +4,6 @@ import {
   Avatar,
   Button,
   CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
   Paper,
   Box,
@@ -52,29 +49,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const Login = ({ history }) => {
-//     const handleLogin = useCallback(
-//       async event => {
-//         event.preventDefault();
-//         const { email, password } = event.target.elements;
-//         try {
-//           await app
-//             .auth()
-//             .signInWithEmailAndPassword(email.value, password.value);
-//           history.push("/");
-//         } catch (error) {
-//           alert(error);
-//         }
-//       },
-//       [history]
-//     );
-
-//     const { currentUser } = useContext(AuthContext);
-
-//     if (currentUser) {
-//       return <Redirect to="/" />;
-//     }
-
 export default function Login() {
   const classes = useStyles();
   const emailRef = useRef();
@@ -119,32 +93,6 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            {/* <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth

@@ -4,7 +4,6 @@ import {
   Avatar,
   Button,
   CssBaseline,
-  TextField,
   Link,
   Grid,
   Box,
@@ -36,20 +35,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
-// const SignUp = ({ history }) => {
-//     const handleSignUp = useCallback(async event => {
-//       event.preventDefault();
-//       const { email, password } = event.target.elements;
-//       try {
-//         await Firebase
-//           .auth()
-//           .createUserWithEmailAndPassword(email.value, password.value);
-//         history.push("/");
-//       } catch (error) {
-//         alert(error);
-//       }
-//     }, [history]);
 
 export default function Signup() {
   const classes = useStyles();
@@ -102,72 +87,6 @@ export default function Signup() {
             <Form.Label>Password Confirmation</Form.Label>
             <Form.Control type="password" ref={passwordConfirmRef} required />
           </Form.Group>
-          {/* <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="fname"
-                  name="firstName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="lname"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  ref={emailRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  ref={passwordRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="confirmpassword"
-                  label="Confirm Password"
-                  type="password"
-                  id="confirmpassword"
-                  autoComplete="confirm-password"
-                  ref={passwordConfirmRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-              </Grid>
-            </Grid> */}
           <Button
             type="submit"
             fullWidth
