@@ -12,6 +12,7 @@ const EmotionListDisplay = () => {
   const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise"); //emotion card clicked on
   const [popUpEmotion, setpopUpEmotion] = useState(null);
   const [level2Active, setLevel2Active] = useState(false);
+  const [color, setColor] = useState()
   // const [level3Active, setLevel3Active] = useState(false);
   const [popUp, setpopUp] = useState(false);
   const userAuth = useAuth();
@@ -122,6 +123,7 @@ const EmotionListDisplay = () => {
   const updateDisplay = (word) => {
     setCurrentEmotionActive(word);
     setLevel2Active(true);
+    setColor(emotionListColor[word])
   };
 
   let level2 = level2Active;
@@ -151,7 +153,8 @@ const EmotionListDisplay = () => {
   const handleSave = () => {
     firestore.collection('UserData').doc(userAuth.currentUser.uid).collection('user-emotions').add({
       emotion: `${popUpEmotion}`,
-      date: new Date()
+      date: new Date(), 
+      color
     }, { merge: true })
   }
 

@@ -11,6 +11,7 @@ import Home from "./components/Home"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
 import ForgotPassword from "./components/ForgotPassword"
+import EmotionHistory from './components/EmotionHistory'
 import New from "./components/New"
 import Navbar from "./components/Navbar"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/Login" component={Login} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/sample" component={SampleFirebaseComponent} />
+        <PrivateRoute path="/Time" component={EmotionHistory} />
         <Route exact path="/" component={Home} />
       </Switch>
     </Router>
