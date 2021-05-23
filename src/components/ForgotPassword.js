@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -52,48 +51,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const Login = ({ history }) => {
-//     const handleLogin = useCallback(
-//       async event => {
-//         event.preventDefault();
-//         const { email, password } = event.target.elements;
-//         try {
-//           await app
-//             .auth()
-//             .signInWithEmailAndPassword(email.value, password.value);
-//           history.push("/");
-//         } catch (error) {
-//           alert(error);
-//         }
-//       },
-//       [history]
-//     );
-
-//     const { currentUser } = useContext(AuthContext);
-
-//     if (currentUser) {
-//       return <Redirect to="/" />;
-//     }
-
-export default function Login() {
+export default function ForgotPassword() {
   const classes = useStyles();
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory()
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
+      setMessage('')
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/")
+      await resetPassword(emailRef.current.value)
+      setMessage('Check your inbox for further instructions')
     } catch {
-      setError("Failed to sign in");
+      setError("Failed to reset password");
     }
 
     setLoading(false);
@@ -107,44 +83,15 @@ export default function Login() {
         <div className={classes.paper}>
           <Avatar alt="Heart" src={heart}></Avatar>
           <Typography component="h1" variant="h5">
-            Login
+            Reset Password
           </Typography>
           {error && <Alert severity="error">{error}</Alert>}
+          {message && <Alert severity="success">{message}</Alert>}
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            {/* <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth
@@ -153,12 +100,12 @@ export default function Login() {
               className={classes.submit}
               disabled={loading}
             >
-              Login
+              Reset Password
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/forgot-password" variant="body2">
-                  Forgot password?
+                <Link href="/Login" variant="body2">
+                  Login
                 </Link>
               </Grid>
               <Grid item>
