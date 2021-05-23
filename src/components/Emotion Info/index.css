@@ -76,11 +76,11 @@ button {
   border: none;
   background: none;
   font-size: 24px;
-  color: #8bc34a;
+  /* color: #8bc34a; */
   cursor: pointer;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
-button:hover {
+/* button:hover {
   color: #4caf50;
   transform: rotate(22deg);
-}
+} */

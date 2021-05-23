@@ -26,8 +26,8 @@ const useNavStyles = makeStyles({
     backgroundColor: '#f90052',
     color: '#050831',
     position: 'absolute',
-    right: '16px',
-    padding: '0 4px',
+    right: '20px',
+    padding: '0 16px',
     borderRadius: '8px',
     borderStyle: 'solid',
     "&:hover": {
