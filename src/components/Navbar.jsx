@@ -19,6 +19,7 @@ const useNavStyles = makeStyles({
     padding: '2px',
     "&:hover": {
       textDecoration: 'none',
+      color: 'inherit',
     },
   },
   crisis: {
@@ -31,6 +32,7 @@ const useNavStyles = makeStyles({
     borderStyle: 'solid',
     "&:hover": {
       textDecoration: 'none',
+      color: 'inherit',
     },
   },
 })
