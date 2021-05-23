@@ -5,7 +5,7 @@ import Popup from "./popup";
 import EmotionInfo from "./Emotion Info/EmotionInfo";
 import FirebaseContext from '../Firebase/context'
 import { useAuth } from './Auth'
-import Alert from "@material-ui/lab/Alert";
+// import Alert from "@material-ui/lab/Alert";
 
 const EmotionListDisplay = () => {
   const firestore = useContext(FirebaseContext)
@@ -126,7 +126,7 @@ const EmotionListDisplay = () => {
     setCurrentEmotionActive(word);
     setLevel2Active(true);
     setColor(emotionListColor[word])
-    if(word == 'Happy'){
+    if(word === 'Happy'){
       setEmotionType('Positive')
     }
     else{

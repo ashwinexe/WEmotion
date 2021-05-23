@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import logo from './img/logo-with-bg.png';
+import logo from './img/logo.png';
 
 const useNavStyles = makeStyles({
   root: {
@@ -57,10 +57,6 @@ export default function Navbar() {
       name: 'Moods Over Time',
       to: '/Date'
     },
-    {
-      name: 'Settings',
-      to: '/Settings'
-    }
 
     // 'Home', // this is where the Alexithymia info will go
     // 'New', // this is where the user will input new emotions
@@ -70,7 +66,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <img className={classes.logo} src={logo}></img>
+      <img className={classes.logo} src={logo} alt="logo"></img>
       {navbarList.map((navbarList) => {
         return (
           <Link className={classes.link} href={navbarList.to}>{navbarList.name}</Link>
