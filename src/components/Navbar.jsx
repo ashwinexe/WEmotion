@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import logo from './img/logo.png';
+import logo from './img/logo-landscape.png';
+// import logo from './img/logofinal.png';
 
 const useNavStyles = makeStyles({
   root: {
@@ -37,7 +38,7 @@ const useNavStyles = makeStyles({
     },
   },
   logo: {
-    width: '70px',
+    width: '200px',
     marginLeft: '10px',
   }
 })
