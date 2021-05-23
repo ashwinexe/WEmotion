@@ -33,17 +33,15 @@ const App = () => {
         {/* // try using components  */}
         {/* change Route to PrivateRoute for /New and /Date when not testing */}
         <Route exact path="/New" component={New} />
-        <Route path="/Date" component={Date} />
         <Route path="/Signup" component={Signup} />
         <Route path="/Login" component={Login} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/sample" component={SampleFirebaseComponent} />
-        <PrivateRoute path="/Time" component={EmotionHistory} />
+        <PrivateRoute path="/Date" component={EmotionHistory} />
         <Route exact path="/" component={Home} />
       </Switch>
     </Router>
     </AuthProvider>
-
     </div>
   );
 };
