@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import logo from './img/logo-with-bg.png';
 
 const useNavStyles = makeStyles({
   root: {
     backgroundColor: '#d5e6f7',
     fontFamily: 'Open Sans',
     fontSize: '32px',
-    color: '#050831',
+    color: '#050831', 
     position: 'relative',
     height: '80px',
     display: 'flex',
@@ -35,6 +36,10 @@ const useNavStyles = makeStyles({
       color: 'inherit',
     },
   },
+  logo: {
+    width: '70px',
+    marginLeft: '10px',
+  }
 })
 
 export default function Navbar() {
@@ -65,7 +70,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <img src={"./img.logo.png"}></img>
+      <img className={classes.logo} src={logo}></img>
       {navbarList.map((navbarList) => {
         return (
           <Link className={classes.link} href={navbarList.to}>{navbarList.name}</Link>
