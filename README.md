@@ -4,7 +4,7 @@
 
 App for people with alexithymia and others who have trouble expressing and describing emotions and feelings.
 
-📌 ## Frontend
+## 📌 Frontend
 
 - Calender page (frontend)
   - graph over time of emotions
