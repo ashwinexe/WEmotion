@@ -199,11 +199,12 @@ const EmotionListDisplay = () => {
         <EmotionInfo word={popUpEmotion} />
 
         {/* button to log emotion into database*/}
-        <button
+        <button className={classes.submit}
           onClick={() => {
 
             handleSave()
             setpopUp(false);
+
           }}
         >
           Log Emotion?
@@ -240,6 +241,10 @@ const useAppStyles = makeStyles({
     textAlign: "center",
     fontFamily: "Open Sans",
   },
+  submit: {
+    border: "1px solid black",
+    borderRadius: "5px",
+  }
 });
 
 export default EmotionListDisplay;
