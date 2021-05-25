@@ -3,27 +3,58 @@ import EmotionCard from "./EmotionCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Popup from "./popup";
 import EmotionInfo from "./Emotion Info/EmotionInfo";
-import FirebaseContext from '../Firebase/context'
-import { useAuth } from './Auth'
+import FirebaseContext from "../Firebase/context";
+import { useAuth } from "./Auth";
 // import Alert from "@material-ui/lab/Alert";
 
+const useAppStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  cards: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
+    fontFamily: "Open Sans",
+  },
+  back: {
+    display: "inline-block",
+    border: "none",
+    padding: "1rem 2rem",
+    margin: "32px",
+    textDecoration: "none",
+    background: "#133072",
+    color: "#FFFFFF",
+    cursor: "pointer",
+    textAlign: "center",
+    fontFamily: "Open Sans",
+  },
+  submit: {
+    border: "1px solid black",
+    borderRadius: "5px",
+  },
+});
+
 const EmotionListDisplay = () => {
-  const firestore = useContext(FirebaseContext)
+  const firestore = useContext(FirebaseContext);
   const classes = useAppStyles();
   const [currentEmotionActive, setCurrentEmotionActive] = useState("surprise"); //emotion card clicked on
   const [popUpEmotion, setpopUpEmotion] = useState(null);
   const [level2Active, setLevel2Active] = useState(false);
-  const [color, setColor] = useState()
-  const [emotionType, setEmotionType] = useState()
-  // const [level3Active, setLevel3Active] = useState(false);
+  const [color, setColor] = useState();
+  const [emotionType, setEmotionType] = useState();
   const [popUp, setpopUp] = useState(false);
   const userAuth = useAuth();
 
   useEffect(() => {
-    console.log(firestore, "FIRESTORE")
-    console.log(userAuth.currentUser.uid)
+    console.log(firestore, "FIRESTORE");
+    console.log(userAuth.currentUser.uid);
 
-      const db = firestore.collection(`UserData/${userAuth.currentUser.uid}/user-emotions`).onSnapshot(
+    const db = firestore
+      .collection(`UserData/${userAuth.currentUser.uid}/user-emotions`)
+      .onSnapshot(
         (items) => {
           items.forEach((item) => {
             let id = item.id;
@@ -31,14 +62,12 @@ const EmotionListDisplay = () => {
 
             console.log(data);
           });
-          // ...
         },
         (err) => {
           console.log(`Encountered error: ${err}`);
         }
       );
-
-  })
+  });
 
   //simple emotions
   const emotionList = [
@@ -53,12 +82,7 @@ const EmotionListDisplay = () => {
 
   //PLACEHOLDER FOR DB -second level of words, depending on what been clicked--it doesn't need to be in the db
   const level2Words = {
-    Surprise: [
-      "Shock", 
-      "Confusion", 
-      "Amazement", 
-      "Excitement"
-    ],
+    Surprise: ["Shock", "Confusion", "Amazement", "Excitement"],
     Happy: [
       "Playful",
       "Content",
@@ -70,20 +94,8 @@ const EmotionListDisplay = () => {
       "Trust",
       "Hope",
     ],
-    Sad: [
-      "Lonely", 
-      "Vulnerable", 
-      "Despair", 
-      "Guilty", 
-      "Depression", 
-      "Hurt"
-    ],
-    Disgust: [
-      "Disapproval", 
-      "Disdain", 
-      "Sick", 
-      "Repulsion"
-    ],
+    Sad: ["Lonely", "Vulnerable", "Despair", "Guilty", "Depression", "Hurt"],
+    Disgust: ["Disapproval", "Disdain", "Sick", "Repulsion"],
     Angry: [
       "Mistrust",
       "Shame",
@@ -94,20 +106,8 @@ const EmotionListDisplay = () => {
       "Distant",
       "Critical",
     ],
-    Bad: [
-      "Boredom", 
-      "Busy", 
-      "Stress", 
-      "Tired"
-    ],
-    Afraid: [
-      "Scared", 
-      "Anxious", 
-      "Insecure", 
-      "Weak", 
-      "Shaky", 
-      "Nervous"
-    ],
+    Bad: ["Boredom", "Busy", "Stress", "Tired"],
+    Afraid: ["Scared", "Anxious", "Insecure", "Weak", "Shaky", "Nervous"],
   };
 
   //colors for all emotions (would be in database)
@@ -125,12 +125,11 @@ const EmotionListDisplay = () => {
   const updateDisplay = (word) => {
     setCurrentEmotionActive(word);
     setLevel2Active(true);
-    setColor(emotionListColor[word])
-    if(word === 'Happy'){
-      setEmotionType('Positive')
-    }
-    else{
-      setEmotionType('Negative')
+    setColor(emotionListColor[word]);
+    if (word === "Happy") {
+      setEmotionType("Positive");
+    } else {
+      setEmotionType("Negative");
     }
   };
 
@@ -145,27 +144,22 @@ const EmotionListDisplay = () => {
     }
   };
 
-  // db.collection("Emotions").doc("OVF7WuFoJAqAmECns3NM").set({
-  //     emotion: "Los Angeles",
-  //     desc: "CA",
-  // })
-  // .then(() => {
-  //     console.log("Document successfully written!");
-  // })
-  // .catch((error) => {
-  //     console.error("Error writing document: ", error);
-  // });
-
   //conditionally rendering next level of words, depending on what user clicked on
-
   const handleSave = () => {
-    firestore.collection('UserData').doc(userAuth.currentUser.uid).collection('user-emotions').add({
-      emotion: `${popUpEmotion}`,
-      date: new Date(), 
-      color,
-      emotionType
-    }, { merge: true })
-  }
+    firestore
+      .collection("UserData")
+      .doc(userAuth.currentUser.uid)
+      .collection("user-emotions")
+      .add(
+        {
+          emotion: `${popUpEmotion}`,
+          date: new Date(),
+          color,
+          emotionType,
+        },
+        { merge: true }
+      );
+  };
 
   return (
     <div className={classes.root}>
@@ -204,55 +198,25 @@ const EmotionListDisplay = () => {
       </div>
 
       <Popup trigger={popUp} setTrigger={setpopUp}>
-        <h3>{`${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion}, ${popUpEmotion},`}</h3>
+        <h3 style={{ textAlign: "center" }}>{`${popUpEmotion}`}</h3>
         <EmotionInfo word={popUpEmotion} />
-
         {/* button to log emotion into database*/}
-        <button className={classes.submit}
-          onClick={() => {
-
-            handleSave()
-            setpopUp(false);
-          }}
-        >
-          Log Emotion?
-        </button>
+        <div style={{ textAlign: "center" }}>
+          <button
+            className={classes.submit}
+            onClick={() => {
+              handleSave();
+              setpopUp(false);
+            }}
+          >
+            Log Emotion?
+          </button>
+        </div>
       </Popup>
-
-      {renderBackButton()}
       {/*button to go back to previous words*/}
+      {renderBackButton()}
     </div>
   );
 };
-
-const useAppStyles = makeStyles({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  cards: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    fontFamily: "Open Sans",
-  },
-  back: {
-    display: "inline-block",
-    border: "none",
-    padding: "1rem 2rem",
-    margin: "32px",
-    textDecoration: "none",
-    background: "#133072",
-    color: "#FFFFFF",
-    cursor: "pointer",
-    textAlign: "center",
-    fontFamily: "Open Sans",
-  },
-  submit: {
-    border: "1px solid black",
-    borderRadius: "5px",
-  }
-});
 
 export default EmotionListDisplay;
