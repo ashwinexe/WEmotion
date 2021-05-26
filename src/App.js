@@ -25,7 +25,7 @@ const App = () => {
           <Switch>
             {/* // try using components  */}
             {/* change Route to PrivateRoute for /New and /Date when not testing */}
-            <PrivateRoute exact path="/New" component={New} />
+            <Route exact path="/New" component={New} />
             <Route path="/Signup" component={Signup} />
             <Route path="/Login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
