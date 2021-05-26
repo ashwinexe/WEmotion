@@ -1,12 +1,5 @@
 import React from "react";
 import "./App.css";
-// import {
-//   Home,
-//   Login,
-//   Signup,
-//   New,
-//   Navbar,
-// } from "./components/index";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -32,7 +25,7 @@ const App = () => {
           <Switch>
             {/* // try using components  */}
             {/* change Route to PrivateRoute for /New and /Date when not testing */}
-            <Route exact path="/New" component={New} />
+            <PrivateRoute exact path="/New" component={New} />
             <Route path="/Signup" component={Signup} />
             <Route path="/Login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
