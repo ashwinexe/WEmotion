@@ -45,3 +45,12 @@ We learned how to maintain teamwork even when half the team was inactive during 
 - We need to clean up our code to adhere to industry best practices.
 - We can improve styling and user experience.
 - We can consider other features to add.
+
+## Contributors :
+
+Every contributor's efforts and time are deeply appreciated :smile:
+
+<a href = "https://github.com/ashwinexe/WEmotion/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=ashwinexe/WEmotion"/>
+</a>
+
