@@ -46,7 +46,7 @@ We learned how to maintain teamwork even when half the team was inactive during 
 - We can improve styling and user experience.
 - We can consider other features to add.
 
-## Contributors :
+## Contributors 🙌:
 
 Every contributor's efforts and time are deeply appreciated :smile:
 
